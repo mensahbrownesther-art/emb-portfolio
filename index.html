@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esther Mensah-Brown — Product Manager &amp; Designer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #0b0e13;
+        --surface: #141922;
+        --surface-alt: #1b222e;
+        --border: #262e3b;
+        --text: #eceff3;
+        --text-muted: #8b96a5;
+        --text-faint: #5a6474;
+        --violet: #7c8cff;
+        --violet-dim: rgba(124, 140, 255, 0.14);
+        --amber: #f2b84b;
+        --amber-dim: rgba(242, 184, 75, 0.14);
+        --teal: #4ade9b;
+        --teal-dim: rgba(74, 222, 155, 0.14);
+        --radius: 10px;
+
+        --font-display: 'Space Grotesk', sans-serif;
+        --font-body: 'Inter', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--violet);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      section {
+        padding: 96px 0;
+        border-top: 1px solid var(--border);
+      }
+
+      /* =========================
+         BACKGROUND
+      ========================= */
+
+      .grid-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image: linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 64px 64px;
+        opacity: 0.35;
+        mask-image: radial-gradient(
+          ellipse 80% 60% at 50% 0%,
+          black 20%,
+          transparent 75%
+        );
+        pointer-events: none;
+      }
+
+      /* =========================
+         NAVIGATION
+      ========================= */
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(11, 14, 19, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 18px 32px;
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-family: var(--font-mono);
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .logo .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--teal);
+        box-shadow: 0 0 0 3px var(--teal-dim);
+      }
+
+      .navlinks {
+        display: flex;
+        gap: 32px;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .navlinks a {
+        transition: color 0.2s ease;
+      }
+
+      .navlinks a:hover {
+        color: var(--text);
+      }
+
+      .nav-cta {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        border: 1px solid var(--border);
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: border-color 0.2s ease, color 0.2s ease;
+        white-space: nowrap;
+      }
+
+      .nav-cta:hover {
+        border-color: var(--violet);
+        color: var(--violet);
+      }
+
+      @media (max-width: 760px) {
+        nav {
+          padding: 16px 20px;
+        }
+
+        .navlinks {
+          display: none;
+        }
+      }
+
+      /* =========================
+         HERO
+      ========================= */
+
+      .hero {
+        padding-top: 88px;
+        padding-bottom: 96px;
+        border-top: none;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 56px;
+        align-items: center;
+      }
+
+      .hero-grid > * {
+        min-width: 0;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+
+      .tag {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        letter-spacing: 0.04em;
+        padding: 5px 10px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+        transition: border-color 0.2s ease, color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .tag.violet {
+        color: var(--violet);
+        border-color: rgba(124, 140, 255, 0.35);
+        background: var(--violet-dim);
+      }
+
+      a.tag:hover {
+        border-color: var(--violet);
+        color: var(--violet);
+        background: var(--violet-dim);
+      }
+
+      h1 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(38px, 5.4vw, 64px);
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+        overflow-wrap: break-word;
+        word-break: break-word;
+      }
+
+      .role {
+        font-family: var(--font-display);
+        font-size: clamp(16px, 2vw, 20px);
+        color: var(--text-muted);
+        font-weight: 500;
+        margin-bottom: 24px;
+      }
+
+      .lede {
+        font-size: 17px;
+        color: var(--text-muted);
+        max-width: 520px;
+        margin-bottom: 32px;
+      }
+
+      .status-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--teal);
+        background: var(--teal-dim);
+        border: 1px solid rgba(74, 222, 155, 0.3);
+        padding: 8px 14px;
+        border-radius: 999px;
+        margin-bottom: 32px;
+      }
+
+      .status-line .pulse {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--teal);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+
+        50% {
+          opacity: 0.35;
+        }
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        font-family: var(--font-mono);
+        font-size: 13.5px;
+        padding: 13px 22px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.15s ease, border-color 0.15s ease,
+          background 0.15s ease;
+      }
+
+      .btn-primary {
+        background: var(--violet);
+        color: #0b0e13;
+        font-weight: 600;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-ghost {
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      .btn-ghost:hover {
+        border-color: var(--text-muted);
+      }
+
+      /* =========================
+         HERO VISUAL
+      ========================= */
+
+      .hero-visual {
+        position: relative;
+        height: 380px;
+      }
+
+      .frame {
+        position: absolute;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+      }
+
+      .frame-label {
+        position: absolute;
+        top: -24px;
+        left: 0;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text-faint);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .frame-label .sq {
+        width: 8px;
+        height: 8px;
+        border: 1px solid var(--violet);
+        border-radius: 2px;
+      }
+
+      .f1 {
+        top: 0;
+        left: 10%;
+        width: 72%;
+        height: 220px;
+        padding: 18px;
+        z-index: 2;
+      }
+
+      .f2 {
+        top: 120px;
+        left: 0;
+        width: 52%;
+        height: 160px;
+        z-index: 1;
+        opacity: 0.6;
+      }
+
+      .f3 {
+        top: 250px;
+        left: 38%;
+        width: 60%;
+        height: 120px;
+        z-index: 3;
+        padding: 14px;
+      }
+
+      .mini-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+
+      .mini-dots {
+        display: flex;
+        gap: 5px;
+      }
+
+      .mini-dots span {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--border);
+      }
+
+      .mini-bar {
+        height: 8px;
+        border-radius: 4px;
+        background: var(--surface-alt);
+        margin-bottom: 8px;
+      }
+
+      .mini-bar.w60 {
+        width: 60%;
+      }
+
+      .mini-bar.w80 {
+        width: 80%;
+      }
+
+      .mini-bar.w40 {
+        width: 40%;
+      }
+
+      .coord {
+        position: absolute;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--text-faint);
+      }
+
+      .badge-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-mono);
+        font-size: 10.5px;
+        padding: 4px 8px;
+        border-radius: 5px;
+      }
+
+      .badge-chip.shipped {
+        background: var(--teal-dim);
+        color: var(--teal);
+      }
+
+      .badge-chip.review {
+        background: var(--amber-dim);
+        color: var(--amber);
+      }
+
+      /* =========================
+         SECTION HEADERS
+      ========================= */
+
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        color: var(--violet);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-family: var(--font-display);
+        font-size: clamp(26px, 3.4vw, 34px);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+      }
+
+      .section-intro {
+        color: var(--text-muted);
+        max-width: 600px;
+        margin-bottom: 48px;
+        font-size: 15.5px;
+      }
+
+      /* =========================
+         ABOUT
+      ========================= */
+
+      .about-body {
+        max-width: 680px;
+        color: var(--text-muted);
+        font-size: 16px;
+      }
+
+      .about-body strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      /* =========================
+         PROCESS
+      ========================= */
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .process-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px 22px;
+        position: relative;
+      }
+
+      .process-num {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--violet);
+        margin-bottom: 14px;
+      }
+
+      .process-card h3 {
+        font-family: var(--font-display);
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .process-card p {
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+
+      .process-note {
+        margin-top: 36px;
+        color: var(--text-muted);
+        font-size: 14.5px;
+        max-width: 680px;
+      }
+
+      .process-note strong {
+        color: var(--text);
+      }
+
+      /* =========================
+         CHANGELOG
+      ========================= */
+
+      .changelog {
+        position: relative;
+      }
+
+      .changelog::before {
+        content: '';
+        position: absolute;
+        left: 73px;
+        top: 8px;
+        bottom: 8px;
+        width: 1px;
+        background: var(--border);
+      }
+
+      .entry {
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        gap: 24px;
+        position: relative;
+        padding-bottom: 52px;
+      }
+
+      .entry > * {
+        min-width: 0;
+      }
+
+      .entry:last-child {
+        padding-bottom: 0;
+      }
+
+      .ver {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text-faint);
+        padding-top: 3px;
+        text-align: right;
+      }
+
+      .node {
+        position: absolute;
+        left: 69px;
+        top: 6px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--bg);
+        border: 2px solid var(--violet);
+      }
+
+      .entry.current .node {
+        background: var(--violet);
+        box-shadow: 0 0 0 4px var(--violet-dim);
+      }
+
+      .entry-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px 26px;
+        grid-column: 2;
+        overflow-wrap: break-word;
+        word-break: break-word;
+      }
+
+      .entry-top {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+
+      .entry-role {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      .entry-meta {
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        color: var(--text-faint);
+        margin-bottom: 14px;
+      }
+
+      .entry-meta .co {
+        color: var(--text-muted);
+      }
+
+      .entry ul {
+        padding-left: 18px;
+        color: var(--text-muted);
+        font-size: 14.5px;
+      }
+
+      .entry li {
+        margin-bottom: 6px;
+      }
+
+      .entry li::marker {
+        color: var(--violet);
+      }
+
+      .metric-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .metric {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        color: var(--amber);
+        background: var(--amber-dim);
+        padding: 4px 9px;
+        border-radius: 5px;
+        border: 1px solid rgba(242, 184, 75, 0.25);
+      }
+
+      /* =========================
+         STACK
+      ========================= */
+
+      .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .stack-cat {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+      }
+
+      .stack-cat h3 {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        color: var(--text-faint);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      .chip-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        font-size: 13.5px;
+        padding: 7px 12px;
+        border-radius: 7px;
+        background: var(--surface-alt);
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      /* =========================
+         CAPABILITIES
+      ========================= */
+
+      .cap-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      /*
+        Capability cards are anchors rather than divs.
+        This makes the entire card clickable and keyboard accessible.
+      */
+
+      .cap-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        color: var(--text);
+        text-decoration: none;
+
+        transition: border-color 0.2s ease, transform 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .cap-card:hover {
+        border-color: rgba(124, 140, 255, 0.4);
+        transform: translateY(-3px);
+        background: #171d27;
+      }
+
+      .cap-card:focus-visible {
+        outline: 2px solid var(--violet);
+        outline-offset: 4px;
+      }
+
+      .cap-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--violet-dim);
+        flex-shrink: 0;
+      }
+
+      .cap-card h3 {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .cap-card p {
+        color: var(--text-muted);
+        font-size: 14.5px;
+      }
+
+      .cap-status {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text-faint);
+        margin-top: auto;
+        padding-top: 8px;
+      }
+
+      /* =========================
+         DESIGN WORK
+      ========================= */
+
+      .design-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .design-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 26px 24px;
+        transition: border-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .design-card:hover {
+        border-color: rgba(242, 184, 75, 0.4);
+        transform: translateY(-3px);
+      }
+
+      .design-tag {
+        font-family: var(--font-mono);
+        font-size: 10.5px;
+        letter-spacing: 0.04em;
+        color: var(--amber);
+        background: var(--amber-dim);
+        display: inline-block;
+        padding: 4px 9px;
+        border-radius: 5px;
+        margin-bottom: 14px;
+      }
+
+      .design-card h3 {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .design-card p {
+        color: var(--text-muted);
+        font-size: 14.5px;
+      }
+
+      .design-cta {
+        margin-top: 44px;
+        border: 1px dashed var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 14.5px;
+      }
+
+      .design-cta a {
+        color: var(--violet);
+        font-weight: 600;
+      }
+
+      /* =========================
+         RECOGNITION
+      ========================= */
+
+      .rec-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .rec-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 22px;
+        background: var(--surface);
+      }
+
+      .rec-year {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--amber);
+        margin-bottom: 10px;
+      }
+
+      .rec-card h4 {
+        font-family: var(--font-display);
+        font-size: 15.5px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .rec-card p {
+        font-size: 13.5px;
+        color: var(--text-muted);
+      }
+
+      /* =========================
+         EDUCATION
+      ========================= */
+
+      .edu-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+
+      .edu-row:last-child {
+        border-bottom: none;
+      }
+
+      .edu-school {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 16.5px;
+      }
+
+      .edu-deg {
+        color: var(--text-muted);
+        font-size: 14px;
+        margin-top: 2px;
+      }
+
+      .edu-date {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text-faint);
+        white-space: nowrap;
+      }
+
+      /* =========================
+         FOOTER
+      ========================= */
+
+      footer {
+        padding: 96px 0 48px;
+        border-top: 1px solid var(--border);
+      }
+
+      .contact-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 56px 48px;
+        text-align: center;
+      }
+
+      .contact-card h2 {
+        margin-bottom: 12px;
+      }
+
+      .contact-card p {
+        color: var(--text-muted);
+        margin-bottom: 32px;
+      }
+
+      .contact-links {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .foot-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 48px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text-faint);
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      /* =========================
+         TABLET
+      ========================= */
+
+      @media (max-width: 860px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .hero-visual {
+          order: -1;
+          max-width: 600px;
+          width: 100%;
+          margin: 0 auto;
+        }
+
+        .process-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .cap-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stack-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* =========================
+         MOBILE
+      ========================= */
+
+      @media (max-width: 760px) {
+        .wrap {
+          padding: 0 20px;
+        }
+
+        section {
+          padding: 72px 0;
+        }
+
+        .hero {
+          padding-top: 64px;
+          padding-bottom: 72px;
+        }
+
+        .hero-grid {
+          gap: 32px;
+        }
+
+        .hero-visual {
+          height: 300px;
+        }
+
+        .f1 {
+          left: 8%;
+          width: 78%;
+          height: 180px;
+          padding: 14px;
+        }
+
+        .f2 {
+          top: 100px;
+          left: 0;
+          width: 50%;
+          height: 130px;
+        }
+
+        .f3 {
+          top: 200px;
+          left: 34%;
+          width: 62%;
+          height: 100px;
+          padding: 12px;
+        }
+
+        .frame-label {
+          top: -21px;
+          font-size: 9px;
+        }
+
+        .section-intro {
+          margin-bottom: 36px;
+        }
+
+        .stack-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .design-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .rec-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-card {
+          padding: 40px 24px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: clamp(38px, 12vw, 52px);
+        }
+
+        .lede {
+          font-size: 16px;
+        }
+
+        .process-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .changelog::before {
+          left: 20px;
+        }
+
+        .entry {
+          grid-template-columns: 32px 1fr;
+          gap: 16px;
+        }
+
+        .ver {
+          display: none;
+        }
+
+        .node {
+          left: 16px;
+        }
+
+        .entry-card {
+          padding: 20px;
+        }
+
+        .entry-role {
+          font-size: 17px;
+        }
+
+        .entry-meta {
+          font-size: 11.5px;
+          line-height: 1.5;
+        }
+
+        .foot-meta {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .hero-visual {
+          height: 270px;
+        }
+
+        .f1 {
+          left: 6%;
+          width: 82%;
+          height: 165px;
+        }
+
+        .f2 {
+          top: 90px;
+          height: 115px;
+        }
+
+        .f3 {
+          top: 180px;
+          left: 30%;
+          width: 66%;
+          height: 90px;
+        }
+
+        .cta-row {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .cta-row .btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .contact-links {
+          flex-direction: column;
+        }
+
+        .contact-links .btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="grid-bg"></div>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+      <nav>
+        <div class="logo">
+          <span class="dot"></span>
+          EMB
+        </div>
+
+        <div class="navlinks">
+          <a href="#about">Overview</a>
+          <a href="#changelog">Changelog</a>
+          <a href="#work">Capabilities</a>
+          <a href="#recognition">Education</a>
+        </div>
+
+        <a
+          class="nav-cta"
+          href="https://www.linkedin.com/in/esther-mensah-brown-194264163/"
+          target="_blank"
+          rel="noopener"
+        >
+          Say hi →
+        </a>
+      </nav>
+    </header>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="tag-row">
+            <a class="tag violet" href="how-i-work.html">
+              PRODUCT MANAGEMENT
+            </a>
+
+            <a class="tag" href="design.html"> UI/UX &amp; GRAPHIC DESIGN </a>
+          </div>
+
+          <h1>Esther Mensah-Brown</h1>
+
+          <div class="role">Product Manager &amp; Designer</div>
+
+          <p class="lede">
+            I turn complex, multi-stakeholder workflows — trade logistics,
+            sprint cycles, brand systems — into products people can actually
+            use. Based in Accra, Ghana.
+          </p>
+
+          <div>
+            <span class="status-line">
+              <span class="pulse"></span>
+              Open to Remote Opportunities
+            </span>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:eaburabura@gmail.com">
+              Email
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="https://www.linkedin.com/in/esther-mensah-brown-194264163/"
+              target="_blank"
+              rel="noopener"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="https://wa.link/qiweh1"
+              target="_blank"
+              rel="noopener"
+            >
+              Whatsapp
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="frame f2"></div>
+
+          <div class="frame f1">
+            <div class="frame-label">
+              <span class="sq"></span>
+              F1 — Roadmap.fig
+            </div>
+
+            <div class="mini-row">
+              <div class="mini-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <span class="badge-chip shipped">● shipped</span>
+            </div>
+
+            <div class="mini-bar w80"></div>
+            <div class="mini-bar w60"></div>
+            <div class="mini-bar w40"></div>
+
+            <span class="coord" style="bottom: 14px; right: 16px">
+              X:128 Y:64
+            </span>
+          </div>
+
+          <div class="frame f3">
+            <div class="frame-label">
+              <span class="sq"></span>
+              F2 — Sprint-14
+            </div>
+
+            <div class="mini-row" style="margin-bottom: 8px">
+              <span class="badge-chip review">◐ in review</span>
+            </div>
+
+            <div class="mini-bar w60"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         OVERVIEW
+    ========================== -->
+
+    <section id="about">
+      <div class="wrap">
+        <div class="eyebrow">Overview</div>
+
+        <h2>Product thinking, backed by a design eye</h2>
+
+        <p class="about-body">
+          I'm an experienced product manager with a strong background in Agile
+          product development, roadmap planning, and functional specification
+          writing — paired with hands-on skill in
+          <strong>
+            UI/UX and graphic design, data visualization, and presentation
+            design </strong
+          >. That combination means I can define what should be built, help
+          design what it looks like, and communicate why it matters to
+          stakeholders. My work spans
+          <strong>
+            B2B agri-tech supply chains, telecom and FMCG brand campaigns, B2B2C
+            e-commerce, SaaS platforms, and freelance brand identity
+          </strong>
+          — always aimed at user-centered outcomes that also move business
+          metrics.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================
+         PROCESS
+    ========================== -->
+
+    <section id="process">
+      <div class="wrap">
+        <div class="eyebrow">How I work</div>
+
+        <h2>My product thinking process</h2>
+
+        <p class="section-intro">
+          The workflow I run for every product, from a first messy requirement
+          to a shipped release.
+        </p>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-num">01 · Discover</div>
+            <h3>Understand the problem</h3>
+
+            <p>
+              Dig into stakeholder needs, existing workflows, and market context
+              before defining scope — turning ambiguous asks into a clear
+              problem statement.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-num">02 · Define</div>
+            <h3>Roadmap &amp; requirements</h3>
+
+            <p>
+              Translate discovery into prioritized roadmaps and functional specs
+              — writing clear requirements and user stories in JIRA that
+              engineering and design can build from.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-num">03 · Deliver</div>
+            <h3>Agile execution</h3>
+
+            <p>
+              Run sprints and scrum ceremonies, coordinating product, design,
+              and engineering so the team ships aligned, on schedule, and
+              without surprises.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-num">04 · Validate</div>
+            <h3>UAT &amp; iterate</h3>
+
+            <p>
+              Lead UAT, surface gaps before launch, and use data and stakeholder
+              feedback to shape the next iteration.
+            </p>
+          </div>
+        </div>
+
+        <p class="process-note">
+          I lean on
+          <strong>AI-augmented workflows (ChatGPT, Claude)</strong>
+          throughout this process — to accelerate research, sharpen
+          requirements, and speed up UX/UI concepting.
+        </p>
+      </div>
+    </section>
+
+    <!-- =========================
+         CAREER CHANGELOG
+    ========================== -->
+
+    <section id="changelog">
+      <div class="wrap">
+        <div class="eyebrow">Career changelog</div>
+
+        <h2>Release history</h2>
+
+        <p class="section-intro">
+          My career, read the way I read a product: as a sequence of shipped
+          releases.
+        </p>
+
+        <div class="changelog">
+          <div class="entry current">
+            <div class="ver">v4.0</div>
+            <div class="node"></div>
+
+            <div class="entry-card">
+              <div class="entry-top">
+                <span class="entry-role">Product Manager</span>
+                <span class="badge-chip shipped">● current</span>
+              </div>
+
+              <div class="entry-meta">
+                <span class="co">Complete Farmer</span>
+                · Dec 2024 — Present
+              </div>
+
+              <ul>
+                <li>
+                  Lead product strategy for a B2B agri-procurement and supply
+                  chain platform serving organizations sourcing crops locally
+                  and internationally.
+                </li>
+
+                <li>
+                  Simplify complex trade, logistics, fulfilment, Incoterms,
+                  documentation, and delivery workflows into intuitive buyer
+                  experiences.
+                </li>
+
+                <li>
+                  Manage roadmaps, define requirements in JIRA, and lead
+                  cross-functional sprint delivery.
+                </li>
+
+                <li>
+                  Led the company website redesign to better communicate the
+                  brand's value proposition.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="ver">v3.0</div>
+            <div class="node"></div>
+
+            <div class="entry-card">
+              <div class="entry-top">
+                <span class="entry-role">
+                  Senior Product Manager / Engineering Lead — Project Mgt.
+                </span>
+              </div>
+
+              <div class="entry-meta">
+                <span class="co">Rancard Solutions Ltd.</span>
+                · Nov 2022 — Dec 2024
+              </div>
+
+              <ul>
+                <li>
+                  Led technical planning, execution, and optimization of top
+                  brand campaigns.
+                </li>
+
+                <li>
+                  Managed customer onboarding and engagement across major
+                  products.
+                </li>
+
+                <li>
+                  Defined product roadmaps and feature prioritization aligned to
+                  market needs.
+                </li>
+
+                <li>
+                  Led scrum meetings and coordinated design, development, and
+                  product improvements to meet deadlines.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="ver">v2.0</div>
+            <div class="node"></div>
+
+            <div class="entry-card">
+              <div class="entry-top">
+                <span class="entry-role">Product Manager</span>
+              </div>
+
+              <div class="entry-meta">
+                <span class="co">Rancard Solutions Ltd.</span>
+                · Sep 2020 — Oct 2022
+              </div>
+
+              <ul>
+                <li>
+                  Defined product vision, roadmaps, and Agile feature
+                  implementation.
+                </li>
+
+                <li>
+                  Collated requirements, moderated scrum meetings, and analyzed
+                  sales data to drive platform improvements.
+                </li>
+
+                <li>
+                  Led sales and marketing for a new commerce platform —
+                  onboarding five brands.
+                </li>
+              </ul>
+
+              <div class="metric-row">
+                <span class="metric">GHS 1M first-year sales</span>
+                <span class="metric">5 brands onboarded</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="ver">v1.1</div>
+            <div class="node"></div>
+
+            <div class="entry-card">
+              <div class="entry-top">
+                <span class="entry-role">Freelance Designer</span>
+                <span class="badge-chip review">◐ ongoing branch</span>
+              </div>
+
+              <div class="entry-meta">
+                <span class="co">Design Portfolio</span>
+                · Apr 2018 — Present
+              </div>
+
+              <ul>
+                <li>
+                  Build sustainable brands for startups — logos, marketing
+                  materials, and digital assets (flyers, social media, banners,
+                  billboards).
+                </li>
+
+                <li>Design presentation templates and user interfaces.</li>
+
+                <li>
+                  Oversee consumer product branding across stationery, food, and
+                  other industries.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="entry">
+            <div class="ver">v1.0</div>
+            <div class="node"></div>
+
+            <div class="entry-card">
+              <div class="entry-top">
+                <span class="entry-role">
+                  Associate Product Manager &amp; Software Analyst
+                </span>
+
+                <span class="badge-chip shipped">● initial release</span>
+              </div>
+
+              <div class="entry-meta">
+                <span class="co">Rancard Solutions Ltd.</span>
+                · Jun 2019 — Aug 2020
+              </div>
+
+              <ul>
+                <li>
+                  Managed three social recommendation projects, using Postman
+                  API queries to generate product catalogs for third-party
+                  stores.
+                </li>
+
+                <li>
+                  Integrated and enhanced the Shopify Dashboard frontend using
+                  the Shopify Polaris framework.
+                </li>
+
+                <li>
+                  Implemented new report metrics on an existing Angular-based
+                  Management Portal.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         TOOLKIT
+    ========================== -->
+
+    <section id="stack">
+      <div class="wrap">
+        <div class="eyebrow">Toolkit</div>
+
+        <h2>Stack</h2>
+
+        <div class="stack-grid">
+          <div class="stack-cat">
+            <h3>Product &amp; delivery</h3>
+
+            <div class="chip-list">
+              <span class="chip">Jira</span>
+              <span class="chip">ClickUp</span>
+              <span class="chip">Trello</span>
+              <span class="chip">Notion</span>
+              <span class="chip">Confluence</span>
+              <span class="chip">Draw.io</span>
+              <span class="chip">Miro</span>
+            </div>
+          </div>
+
+          <div class="stack-cat">
+            <h3>AI assisted workflow</h3>
+
+            <div class="chip-list">
+              <span class="chip">ChatGPT</span>
+              <span class="chip">Claude</span>
+            </div>
+          </div>
+
+          <div class="stack-cat">
+            <h3>Design</h3>
+
+            <div class="chip-list">
+              <span class="chip">Figma</span>
+              <span class="chip">Sketch</span>
+              <span class="chip">Adobe Photoshop</span>
+              <span class="chip">Adobe Illustrator</span>
+            </div>
+          </div>
+
+          <div class="stack-cat">
+            <h3>Workspace</h3>
+
+            <div class="chip-list">
+              <span class="chip">Google Workspace</span>
+              <span class="chip">Microsoft 365</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         CAPABILITIES
+    ========================== -->
+
+    <section id="work">
+      <div class="wrap">
+        <div class="eyebrow">What I do</div>
+
+        <h2>Capabilities</h2>
+
+        <p class="section-intro">
+          Product strategy, requirements, UX/UI, visual communication and agile
+          delivery — bringing clarity from problem definition through execution.
+        </p>
+
+        <div class="cap-grid">
+          <!-- PRODUCT STRATEGY -->
+          <a class="cap-card" href="how-i-work.html">
+            <div class="cap-icon">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#7C8CFF"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M3 12h4l3 8 4-16 3 8h4" />
+              </svg>
+            </div>
+
+            <h3>Product strategy &amp; roadmaps</h3>
+
+            <p>
+              Turning ambiguous, multi-stakeholder problems — trade
+              documentation, logistics, fulfilment — into prioritized roadmaps,
+              clear JIRA requirements, and shipped sprints.
+            </p>
+
+            <div class="cap-status">→ Complete Farmer, Rancard Solutions</div>
+          </a>
+
+          <!-- BRAND & VISUAL IDENTITY -->
+          <a class="cap-card" href="design.html">
+            <div class="cap-icon">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#7C8CFF"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+              </svg>
+            </div>
+
+            <h3>Brand &amp; visual identity</h3>
+
+            <p>
+              Building sustainable brand systems for startups — logos, marketing
+              collateral, social assets, and packaging across stationery, food,
+              and other consumer categories.
+            </p>
+
+            <div class="cap-status">→ Freelance, since 2018</div>
+          </a>
+
+          <!-- DATA & PRESENTATION DESIGN -->
+          <a class="cap-card" href="design.html">
+            <div class="cap-icon">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#7C8CFF"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M4 19V9M12 19V5M20 19v-7" />
+              </svg>
+            </div>
+
+            <h3>Data &amp; presentation design</h3>
+
+            <p>
+              Analyzing sales and product data, then packaging insight into
+              high-impact presentations and dashboards that stakeholders can act
+              on.
+            </p>
+
+            <div class="cap-status">→ Rancard Solutions</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         RECOGNITION
+    ========================== -->
+
+    <section>
+      <div class="wrap">
+        <div class="eyebrow">Recognition</div>
+
+        <h2 id="recognition">Certifications &amp; awards</h2>
+
+        <div class="rec-grid">
+          <div class="rec-card">
+            <div class="rec-year">2021</div>
+            <h4>Female Developer of the Year</h4>
+            <p>Ghana Ladies In Tech (GLIT)</p>
+          </div>
+
+          <div class="rec-card">
+            <div class="rec-year">2024</div>
+            <h4>Women in Ministry Leadership Certificate</h4>
+            <p>Ascent College</p>
+          </div>
+
+          <div class="rec-card">
+            <div class="rec-year">Ongoing</div>
+            <h4>Licenses &amp; Certifications</h4>
+            <p>Full list on LinkedIn</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         EDUCATION
+    ========================== -->
+
+    <section id="education">
+      <div class="wrap">
+        <div class="eyebrow">Education</div>
+
+        <h2>Background</h2>
+
+        <div class="edu-row">
+          <div>
+            <div class="edu-school">University of Ghana, Legon</div>
+            <div class="edu-deg">BSc Computer Science</div>
+          </div>
+
+          <div class="edu-date">2015 — 2019</div>
+        </div>
+
+        <div class="edu-row">
+          <div>
+            <div class="edu-school">Achimota High School, Ghana</div>
+            <div class="edu-deg">Science, WASSCE</div>
+          </div>
+
+          <div class="edu-date">2012 — 2015</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         FOOTER / CONTACT
+    ========================== -->
+
+    <footer>
+      <div class="wrap">
+        <div class="contact-card">
+          <div class="eyebrow" style="justify-content: center; display: flex">
+            Get in touch
+          </div>
+
+          <h2>Let's build something intuitive</h2>
+
+          <p>
+            Open to product management and design roles &amp; collaborations.
+          </p>
+
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:eaburabura@gmail.com">
+              Email
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="https://wa.link/qiweh1"
+              target="_blank"
+              rel="noopener"
+            >
+              Whatsapp
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="https://www.linkedin.com/in/esther-mensah-brown-194264163/"
+              target="_blank"
+              rel="noopener"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <div class="foot-meta">
+          <span>© 2026 Esther Mensah-Brown</span>
+          <span>Accra, Ghana</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>How I Work as a PM — Esther Mensah-Brown</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #0b0e13;
+        --surface: #141922;
+        --surface-alt: #1b222e;
+        --border: #262e3b;
+        --text: #eceff3;
+        --text-muted: #8b96a5;
+        --text-faint: #5a6474;
+        --violet: #7c8cff;
+        --violet-dim: rgba(124, 140, 255, 0.14);
+        --amber: #f2b84b;
+        --amber-dim: rgba(242, 184, 75, 0.14);
+        --teal: #4ade9b;
+        --teal-dim: rgba(74, 222, 155, 0.14);
+
+        --radius: 10px;
+
+        --font-display: 'Space Grotesk', sans-serif;
+        --font-body: 'Inter', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--violet);
+        outline-offset: 3px;
+      }
+
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      section {
+        padding: 88px 0;
+        border-top: 1px solid var(--border);
+      }
+
+      /* =========================
+   BACKGROUND
+========================= */
+
+      .grid-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+
+        background-image: linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+
+        background-size: 64px 64px;
+        opacity: 0.35;
+
+        mask-image: radial-gradient(
+          ellipse 80% 60% at 50% 0%,
+          black 20%,
+          transparent 75%
+        );
+      }
+
+      /* =========================
+   NAV
+========================= */
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+
+        background: rgba(11, 14, 19, 0.85);
+        backdrop-filter: blur(10px);
+
+        border-bottom: 1px solid var(--border);
+      }
+
+      nav {
+        max-width: 1120px;
+        margin: 0 auto;
+
+        padding: 18px 32px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        font-family: var(--font-mono);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .logo .dot {
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: var(--teal);
+
+        box-shadow: 0 0 0 3px var(--teal-dim);
+      }
+
+      .navlinks {
+        display: flex;
+        gap: 32px;
+
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+
+      .navlinks a:hover {
+        color: var(--text);
+      }
+
+      .nav-cta {
+        padding: 8px 16px;
+
+        border: 1px solid var(--border);
+        border-radius: 8px;
+
+        font-family: var(--font-mono);
+        font-size: 13px;
+
+        transition: 0.2s;
+      }
+
+      .nav-cta:hover {
+        color: var(--violet);
+        border-color: var(--violet);
+      }
+
+      /* =========================
+   HERO
+========================= */
+
+      .hero {
+        padding: 80px 0 88px;
+        border-top: none;
+      }
+
+      .back-link {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+
+        margin-bottom: 30px;
+
+        color: var(--text-muted);
+
+        font-family: var(--font-mono);
+        font-size: 13px;
+      }
+
+      .back-link:hover {
+        color: var(--violet);
+      }
+
+      .eyebrow {
+        margin-bottom: 10px;
+
+        color: var(--violet);
+
+        font-family: var(--font-mono);
+        font-size: 12px;
+
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 850px;
+
+        margin-bottom: 18px;
+
+        font-family: var(--font-display);
+        font-size: clamp(40px, 5.4vw, 64px);
+        font-weight: 700;
+
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+
+      h2 {
+        margin-bottom: 14px;
+
+        font-family: var(--font-display);
+        font-size: clamp(27px, 3.4vw, 36px);
+        font-weight: 600;
+
+        letter-spacing: -0.01em;
+      }
+
+      .lede {
+        max-width: 680px;
+
+        color: var(--text-muted);
+
+        font-size: 17px;
+      }
+
+      /* =========================
+   CONTENT
+========================= */
+
+      .section-intro {
+        max-width: 680px;
+
+        margin-bottom: 40px;
+
+        color: var(--text-muted);
+
+        font-size: 15.5px;
+      }
+
+      .detail-section {
+        padding: 72px 0;
+      }
+
+      /* =========================
+   CARDS
+========================= */
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .detail-card {
+        padding: 26px 24px;
+
+        background: var(--surface);
+
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+
+        transition: 0.2s;
+      }
+
+      .detail-card:hover {
+        border-color: rgba(124, 140, 255, 0.35);
+        transform: translateY(-2px);
+      }
+
+      .detail-card h3 {
+        margin-bottom: 9px;
+
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .detail-card p {
+        color: var(--text-muted);
+        font-size: 14.5px;
+      }
+
+      .process-num {
+        margin-bottom: 12px;
+
+        color: var(--violet);
+
+        font-family: var(--font-mono);
+        font-size: 12px;
+      }
+
+      /* =========================
+   PROCESS NOTE
+========================= */
+
+      .process-note {
+        max-width: 720px;
+
+        margin-top: 30px;
+
+        color: var(--text-muted);
+
+        font-size: 14.5px;
+      }
+
+      .process-note strong {
+        color: var(--text);
+      }
+
+      /* =========================
+   VISUAL COMMUNICATION
+========================= */
+
+      .visual-section {
+        background: linear-gradient(
+          180deg,
+          rgba(124, 140, 255, 0.025),
+          transparent
+        );
+      }
+
+      .visual-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .visual-card {
+        padding: 26px 24px;
+
+        background: var(--surface);
+
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+
+        transition: 0.2s;
+      }
+
+      .visual-card:hover {
+        border-color: rgba(124, 140, 255, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .visual-icon {
+        width: 38px;
+        height: 38px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-bottom: 16px;
+
+        border-radius: 8px;
+
+        background: var(--violet-dim);
+
+        color: var(--violet);
+
+        font-family: var(--font-mono);
+      }
+
+      .visual-card h3 {
+        margin-bottom: 8px;
+
+        font-family: var(--font-display);
+        font-size: 18px;
+      }
+
+      .visual-card p {
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+
+      /* =========================
+   ALIGNMENT CALLOUT
+========================= */
+
+      .alignment-card {
+        margin-top: 24px;
+        padding: 30px;
+
+        background: linear-gradient(
+          135deg,
+          rgba(124, 140, 255, 0.08),
+          rgba(74, 222, 155, 0.04)
+        );
+
+        border: 1px solid rgba(124, 140, 255, 0.25);
+        border-radius: 12px;
+      }
+
+      .alignment-label {
+        margin-bottom: 10px;
+
+        color: var(--teal);
+
+        font-family: var(--font-mono);
+        font-size: 11px;
+
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .alignment-card h3 {
+        margin-bottom: 9px;
+
+        font-family: var(--font-display);
+        font-size: 22px;
+      }
+
+      .alignment-card p {
+        max-width: 780px;
+
+        color: var(--text-muted);
+
+        font-size: 15px;
+      }
+
+      .outcome-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        margin-top: 20px;
+      }
+
+      .outcome {
+        padding: 6px 10px;
+
+        background: var(--surface);
+
+        border: 1px solid var(--border);
+        border-radius: 6px;
+
+        color: var(--text-muted);
+
+        font-family: var(--font-mono);
+        font-size: 11px;
+      }
+
+      /* =========================
+   PRINCIPLES
+========================= */
+
+      .principle-card {
+        min-height: 190px;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      .principle-number {
+        margin-bottom: 16px;
+
+        color: var(--text-faint);
+
+        font-family: var(--font-mono);
+        font-size: 11px;
+      }
+
+      /* =========================
+   COLLABORATION
+========================= */
+
+      .collab-card {
+        min-height: 150px;
+      }
+
+      /* =========================
+   CTA
+========================= */
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        padding: 13px 22px;
+
+        border-radius: 8px;
+
+        font-family: var(--font-mono);
+        font-size: 13.5px;
+
+        transition: 0.15s;
+      }
+
+      .btn-primary {
+        background: var(--violet);
+        color: #0b0e13;
+        font-weight: 600;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-ghost {
+        border: 1px solid var(--border);
+      }
+
+      .btn-ghost:hover {
+        border-color: var(--text-muted);
+      }
+
+      /* =========================
+   RESPONSIVE
+========================= */
+
+      @media (max-width: 860px) {
+        .visual-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .navlinks {
+          display: none;
+        }
+
+        nav {
+          padding: 16px 20px;
+        }
+
+        .wrap {
+          padding: 0 20px;
+        }
+
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+
+        section {
+          padding: 70px 0;
+        }
+
+        .hero {
+          padding: 62px 0 70px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 42px;
+        }
+
+        .lede {
+          font-size: 16px;
+        }
+
+        .visual-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .detail-card {
+          padding: 24px 20px;
+        }
+
+        .alignment-card {
+          padding: 24px 20px;
+        }
+
+        .alignment-card h3 {
+          font-size: 20px;
+        }
+
+        .cta-row {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="grid-bg"></div>
+
+    <!-- =========================
+     NAVIGATION
+========================= -->
+
+    <header>
+      <nav>
+        <a class="logo" href="index.html">
+          <span class="dot"></span>
+          EMB
+        </a>
+
+        <div class="navlinks">
+          <a href="index.html#about">Overview</a>
+          <a href="index.html#changelog">Changelog</a>
+          <a href="index.html#stack">Capabilities</a>
+          <a href="index.html#recognition">Education</a>
+        </div>
+
+        <a
+          class="nav-cta"
+          href="https://www.linkedin.com/in/esther-mensah-brown-194264163/"
+        >
+          Say hi →
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- =========================
+     HERO
+========================= -->
+
+      <section class="hero">
+        <div class="wrap">
+          <a class="back-link" href="index.html"> ← Back to portfolio </a>
+
+          <div class="eyebrow">Product Management</div>
+
+          <h1>How I work as a PM</h1>
+
+          <p class="lede">
+            I bring structure to ambiguous problems through clear requirements,
+            visual communication, documentation and cross-functional alignment.
+          </p>
+        </div>
+      </section>
+
+      <!-- =========================
+     PROCESS
+========================= -->
+
+      <section class="detail-section">
+        <div class="wrap">
+          <div class="eyebrow">My process</div>
+
+          <h2>From ambiguity to execution</h2>
+
+          <p class="section-intro">
+            I create clarity before execution so teams understand the problem,
+            solution, dependencies and expected outcome.
+          </p>
+
+          <div class="detail-grid">
+            <div class="detail-card">
+              <div class="process-num">01 · Discover</div>
+
+              <h3>Understand the problem</h3>
+
+              <p>
+                Explore stakeholder needs, user problems, workflows and business
+                context before defining scope.
+              </p>
+            </div>
+
+            <div class="detail-card">
+              <div class="process-num">02 · Define</div>
+
+              <h3>Structure the solution</h3>
+
+              <p>
+                Translate discovery into roadmaps, requirements, user stories
+                and clear functional specifications.
+              </p>
+            </div>
+
+            <div class="detail-card">
+              <div class="process-num">03 · Deliver</div>
+
+              <h3>Align &amp; execute</h3>
+
+              <p>
+                Coordinate product, design and engineering while keeping
+                priorities, dependencies and decisions visible.
+              </p>
+            </div>
+
+            <div class="detail-card">
+              <div class="process-num">04 · Validate</div>
+
+              <h3>Test &amp; iterate</h3>
+
+              <p>
+                Lead UAT, identify gaps and use feedback to improve the product
+                and validate outcomes.
+              </p>
+            </div>
+          </div>
+
+          <p class="process-note">
+            <strong>My goal:</strong>
+            reduce ambiguity before it becomes rework, unnecessary bugs or
+            delivery delays.
+          </p>
+        </div>
+      </section>
+
+      <!-- =========================
+     VISUAL COMMUNICATION
+========================= -->
+
+      <section class="detail-section visual-section">
+        <div class="wrap">
+          <div class="eyebrow">Visual communication</div>
+
+          <h2>I make complexity visible.</h2>
+
+          <p class="section-intro">
+            I use visuals alongside written requirements to make complex
+            products easier for teams to understand and execute.
+          </p>
+
+          <div class="visual-grid">
+            <div class="visual-card">
+              <div class="visual-icon">↗</div>
+
+              <h3>Flowcharts &amp; flows</h3>
+
+              <p>
+                Map user journeys, business processes, system behaviour,
+                decision points and dependencies.
+              </p>
+            </div>
+
+            <div class="visual-card">
+              <div class="visual-icon">◇</div>
+
+              <h3>Visual explanations</h3>
+
+              <p>
+                Use diagrams, screenshots and annotated visuals to simplify
+                requirements and interactions.
+              </p>
+            </div>
+
+            <div class="visual-card">
+              <div class="visual-icon">▤</div>
+
+              <h3>Presentations &amp; walkthroughs</h3>
+
+              <p>
+                Turn complex concepts into structured walkthroughs that
+                stakeholders and technical teams can quickly understand.
+              </p>
+            </div>
+          </div>
+
+          <div class="alignment-card">
+            <div class="alignment-label">The principle</div>
+
+            <h3>One product. One shared understanding.</h3>
+
+            <p>
+              I make logic, interactions, dependencies and expected outcomes
+              explicit so business, design, engineering and technical teams work
+              from the same understanding.
+            </p>
+
+            <div class="outcome-row">
+              <span class="outcome">Less ambiguity</span>
+              <span class="outcome">Fewer assumptions</span>
+              <span class="outcome">Less rework</span>
+              <span class="outcome">Fewer avoidable bugs</span>
+              <span class="outcome">Better handoffs</span>
+              <span class="outcome">Faster alignment</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+     WORKING PRINCIPLES
+========================= -->
+
+      <section class="detail-section">
+        <div class="wrap">
+          <div class="eyebrow">Working principles</div>
+
+          <h2>How I approach product delivery</h2>
+
+          <p class="section-intro">
+            The principles that guide how I think, communicate and collaborate.
+          </p>
+
+          <div class="detail-grid">
+            <div class="detail-card principle-card">
+              <div class="principle-number">01</div>
+
+              <h3>Clarity before execution</h3>
+
+              <p>
+                I clarify the problem, user need, scope, outcome and
+                dependencies before delivery begins.
+              </p>
+            </div>
+
+            <div class="detail-card principle-card">
+              <div class="principle-number">02</div>
+
+              <h3>Visualise complexity</h3>
+
+              <p>
+                I use flowcharts, diagrams and visual references when written
+                requirements alone aren't enough.
+              </p>
+            </div>
+
+            <div class="detail-card principle-card">
+              <div class="principle-number">03</div>
+
+              <h3>Document from day one</h3>
+
+              <p>
+                I document requirements, decisions and flows from the start so
+                context is preserved through changes, handoffs and future
+                improvements.
+              </p>
+            </div>
+
+            <div class="detail-card principle-card">
+              <div class="principle-number">04</div>
+
+              <h3>Cross-functional alignment</h3>
+
+              <p>
+                I bridge business, design and engineering so decisions and
+                requirements are understood consistently.
+              </p>
+            </div>
+
+            <div class="detail-card principle-card">
+              <div class="principle-number">05</div>
+
+              <h3>Prevent problems upstream</h3>
+
+              <p>
+                I surface ambiguity, edge cases and dependencies early to reduce
+                avoidable rework and delivery friction.
+              </p>
+            </div>
+
+            <div class="detail-card principle-card">
+              <div class="principle-number">06</div>
+
+              <h3>Design-informed thinking</h3>
+
+              <p>
+                My UI/UX background helps me think through user flows, usability
+                and product experiences with designers.
+              </p>
+            </div>
+
+            <div class="detail-card principle-card">
+              <div class="principle-number">07</div>
+
+              <h3>AI-augmented workflows</h3>
+
+              <p>
+                I use AI tools to accelerate research, requirements, exploration
+                and documentation while keeping judgement human-led.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+     DOCUMENTATION
+========================= -->
+
+      <section class="detail-section">
+        <div class="wrap">
+          <div class="eyebrow">Documentation</div>
+
+          <h2>Documentation is part of the process, not the handoff.</h2>
+
+          <p class="section-intro">
+            Products change. People change. Requirements evolve. I therefore
+            treat documentation as a living part of product development rather
+            than something created at the end.
+          </p>
+
+          <div class="alignment-card">
+            <div class="alignment-label">From day one</div>
+
+            <h3>Preserve context as the product evolves.</h3>
+
+            <p>
+              I maintain detailed documentation around requirements, decisions,
+              flows, assumptions and product logic so teams can pick up work
+              with context intact — even when ownership changes or new
+              improvements are introduced.
+            </p>
+
+            <div class="outcome-row">
+              <span class="outcome">Clear handoffs</span>
+              <span class="outcome">Preserved decisions</span>
+              <span class="outcome">Less knowledge loss</span>
+              <span class="outcome">Easier onboarding</span>
+              <span class="outcome">Better continuity</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+     COLLABORATION
+========================= -->
+
+      <section class="detail-section">
+        <div class="wrap">
+          <div class="eyebrow">Collaboration</div>
+
+          <h2>I adapt communication to the audience.</h2>
+
+          <p class="section-intro">
+            Different teams need different levels of detail. I keep the product
+            intent consistent while adapting how I communicate it.
+          </p>
+
+          <div class="detail-grid">
+            <div class="detail-card collab-card">
+              <h3>Business &amp; stakeholders</h3>
+
+              <p>Objectives, value, priorities, scope, risks and outcomes.</p>
+            </div>
+
+            <div class="detail-card collab-card">
+              <h3>Designers</h3>
+
+              <p>User journeys, interactions, requirements and edge cases.</p>
+            </div>
+
+            <div class="detail-card collab-card">
+              <h3>Engineers &amp; backend teams</h3>
+
+              <p>
+                Functional requirements, business rules, dependencies, data
+                needs and acceptance criteria.
+              </p>
+            </div>
+
+            <div class="detail-card collab-card">
+              <h3>System architects</h3>
+
+              <p>
+                System interactions, integrations, dependencies and process
+                flows.
+              </p>
+            </div>
+          </div>
+
+          <div class="alignment-card">
+            <div class="alignment-label">My objective</div>
+
+            <h3>Make the product understandable before making it buildable.</h3>
+
+            <p>
+              When teams understand the same problem, flow and expected outcome,
+              they can make better decisions without repeatedly returning for
+              clarification.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+     CTA
+========================= -->
+
+      <section class="detail-section">
+        <div class="wrap">
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:eaburabura@gmail.com">
+              Work with me →
+            </a>
+
+            <a class="btn btn-ghost" href="index.html"> Back to portfolio </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

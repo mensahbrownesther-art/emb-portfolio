@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI/UX &amp; Graphic Design — Esther Mensah-Brown</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0e13;
+        --surface: #141922;
+        --surface-alt: #1b222e;
+        --border: #262e3b;
+        --text: #eceff3;
+        --text-muted: #8b96a5;
+        --text-faint: #5a6474;
+        --violet: #7c8cff;
+        --violet-dim: rgba(124, 140, 255, 0.14);
+        --amber: #f2b84b;
+        --amber-dim: rgba(242, 184, 75, 0.14);
+        --teal: #4ade9b;
+        --teal-dim: rgba(74, 222, 155, 0.14);
+        --radius: 10px;
+        --font-display: 'Space Grotesk', sans-serif;
+        --font-body: 'Inter', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      :focus-visible {
+        outline: 2px solid var(--violet);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+      section {
+        padding: 96px 0;
+        border-top: 1px solid var(--border);
+      }
+      @media (max-width: 600px) {
+        .wrap {
+          padding: 0 20px;
+        }
+        section {
+          padding: 56px 0;
+        }
+      }
+
+      /* Background texture */
+      .grid-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image: linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 64px 64px;
+        opacity: 0.35;
+        mask-image: radial-gradient(
+          ellipse 80% 60% at 50% 0%,
+          black 20%,
+          transparent 75%
+        );
+      }
+
+      /* Nav */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(11, 14, 19, 0.85);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 32px;
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+      @media (max-width: 600px) {
+        nav {
+          padding: 14px 20px;
+        }
+      }
+      .logo {
+        font-family: var(--font-mono);
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .logo .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--teal);
+        box-shadow: 0 0 0 3px var(--teal-dim);
+      }
+      .navlinks {
+        display: flex;
+        gap: 32px;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+      .navlinks a:hover {
+        color: var(--text);
+      }
+      .nav-cta {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        border: 1px solid var(--border);
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: border-color 0.2s, color 0.2s;
+      }
+      .nav-cta:hover {
+        border-color: var(--violet);
+        color: var(--violet);
+      }
+      .navlinks-mobile {
+        display: none;
+      }
+      @media (max-width: 760px) {
+        .navlinks {
+          display: none;
+        }
+      }
+
+      /* Hero */
+      .hero {
+        padding: 88px 0 96px;
+        border-top: none;
+      }
+      @media (max-width: 600px) {
+        .hero {
+          padding: 48px 0 40px;
+        }
+      }
+
+      .tag {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        letter-spacing: 0.04em;
+        padding: 5px 10px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        color: var(--text-muted);
+      }
+      .tag.violet {
+        color: var(--violet);
+        border-color: rgba(124, 140, 255, 0.35);
+        background: var(--violet-dim);
+      }
+
+      h1 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(34px, 4.6vw, 52px);
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+      }
+      .lede {
+        font-size: 17px;
+        color: var(--text-muted);
+        max-width: 620px;
+        margin-bottom: 32px;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        font-family: var(--font-mono);
+        font-size: 13.5px;
+        padding: 13px 22px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.15s ease, border-color 0.15s ease,
+          background 0.15s ease;
+      }
+      .btn-primary {
+        background: var(--violet);
+        color: #0b0e13;
+        font-weight: 600;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+      }
+      .btn-ghost {
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+      .btn-ghost:hover {
+        border-color: var(--text-muted);
+      }
+
+      /* Section headers */
+      .eyebrow {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        color: var(--violet);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      h2 {
+        font-family: var(--font-display);
+        font-size: clamp(24px, 3vw, 30px);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+      }
+      .section-intro {
+        color: var(--text-muted);
+        max-width: 600px;
+        margin-bottom: 40px;
+        font-size: 15.5px;
+      }
+
+      .chip-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .chip {
+        font-size: 13.5px;
+        padding: 7px 12px;
+        border-radius: 7px;
+        background: var(--surface-alt);
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      /* Design work */
+      .design-tag {
+        font-family: var(--font-mono);
+        font-size: 10.5px;
+        letter-spacing: 0.04em;
+        color: var(--amber);
+        background: var(--amber-dim);
+        display: inline-block;
+        padding: 4px 9px;
+        border-radius: 5px;
+        margin-bottom: 14px;
+        align-self: flex-start;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 32px;
+      }
+      .back-link:hover {
+        color: var(--violet);
+      }
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: 760px) {
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .detail-grid {
+          gap: 14px;
+        }
+      }
+      .detail-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px 24px;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+      }
+      @media (max-width: 600px) {
+        .detail-card {
+          padding: 20px 16px;
+        }
+      }
+      .detail-card h3 {
+        font-family: var(--font-display);
+        font-size: 19px;
+        margin-bottom: 10px;
+      }
+      .detail-card p,
+      .detail-card li {
+        color: var(--text-muted);
+        font-size: 14.5px;
+      }
+      .detail-card ul {
+        padding-left: 18px;
+      }
+      .detail-card li {
+        margin-bottom: 8px;
+      }
+      .detail-section {
+        padding: 72px 0;
+        border-top: 1px solid var(--border);
+      }
+      @media (max-width: 600px) {
+        .detail-section {
+          padding: 44px 0;
+        }
+      }
+      /* Sample image galleries */
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-top: 18px;
+      }
+      @media (max-width: 420px) {
+        .gallery {
+          gap: 6px;
+          margin-top: 14px;
+        }
+      }
+      .gallery-item {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        background: var(--surface-alt);
+        border: 1px solid var(--border);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.8) brightness(0.92);
+        transition: transform 0.3s ease, filter 0.3s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.04);
+        filter: saturate(0.95) brightness(1);
+      }
+      .sample-badge {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        font-family: var(--font-mono);
+        font-size: 8.5px;
+        letter-spacing: 0.03em;
+        background: rgba(11, 14, 19, 0.75);
+        backdrop-filter: blur(4px);
+        color: var(--text-muted);
+        padding: 3px 6px;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+      }
+      .gallery-item {
+        cursor: zoom-in;
+      }
+      .gallery-item:focus-visible {
+        outline: 2px solid var(--violet);
+        outline-offset: 2px;
+      }
+
+      /* Lightbox */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(6, 8, 11, 0.92);
+        backdrop-filter: blur(6px);
+        padding: 24px;
+      }
+      @media (max-width: 600px) {
+        .lightbox {
+          padding: 16px;
+        }
+      }
+      .lightbox.open {
+        display: flex;
+      }
+      .lightbox-figure {
+        position: relative;
+        max-width: min(920px, 92vw);
+        max-height: 82vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+      @media (max-width: 600px) {
+        .lightbox-figure {
+          max-width: 88vw;
+          gap: 10px;
+        }
+      }
+      .lightbox-figure img {
+        max-width: 100%;
+        max-height: 74vh;
+        width: auto;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        box-shadow: 0 30px 90px -20px rgba(0, 0, 0, 0.7);
+      }
+      @media (max-width: 600px) {
+        .lightbox-figure img {
+          max-height: 64vh;
+        }
+      }
+      .lightbox-caption {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text-muted);
+        text-align: center;
+      }
+      @media (max-width: 600px) {
+        .lightbox-caption {
+          font-size: 11px;
+          padding: 0 8px;
+        }
+      }
+      .lightbox-counter {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--text-faint);
+      }
+      .lightbox-close {
+        position: absolute;
+        top: -44px;
+        right: 0;
+        background: none;
+        border: 1px solid var(--border);
+        color: var(--text);
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.2s, color 0.2s;
+      }
+      .lightbox-close:hover {
+        border-color: var(--violet);
+        color: var(--violet);
+      }
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(20, 25, 34, 0.8);
+        border: 1px solid var(--border);
+        color: var(--text);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: border-color 0.2s, color 0.2s, background 0.2s;
+      }
+      .lightbox-nav:hover {
+        border-color: var(--violet);
+        color: var(--violet);
+        background: var(--violet-dim);
+      }
+      .lightbox-prev {
+        left: -56px;
+      }
+      .lightbox-next {
+        right: -56px;
+      }
+      @media (max-width: 760px) {
+        .lightbox-prev {
+          left: 6px;
+        }
+        .lightbox-next {
+          right: 6px;
+        }
+        .lightbox-close {
+          top: -40px;
+          right: 0;
+        }
+      }
+      @media (max-width: 600px) {
+        .lightbox-nav {
+          position: fixed;
+          width: 38px;
+          height: 38px;
+          font-size: 16px;
+        }
+        .lightbox-prev {
+          left: 10px;
+        }
+        .lightbox-next {
+          right: 10px;
+        }
+        .lightbox-close {
+          position: fixed;
+          top: 16px;
+          right: 16px;
+        }
+      }
+
+      /* Contact / footer */
+      footer {
+        padding: 96px 0 48px;
+        border-top: 1px solid var(--border);
+      }
+      .contact-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 56px 48px;
+        text-align: center;
+      }
+      @media (max-width: 600px) {
+        .contact-card {
+          padding: 40px 24px;
+        }
+      }
+      .contact-card h2 {
+        margin-bottom: 12px;
+      }
+      .contact-card p {
+        color: var(--text-muted);
+        margin-bottom: 32px;
+      }
+      .contact-links {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .foot-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 48px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text-faint);
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      /* Responsive content wrapping */
+      .wrap {
+        width: 100%;
+      }
+      .detail-grid {
+        align-items: stretch;
+        grid-auto-flow: row;
+      }
+      .detail-card {
+        min-width: 0;
+        overflow: hidden;
+        height: 100%;
+      }
+      .detail-card p {
+        overflow-wrap: anywhere;
+      }
+      .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 100%;
+      }
+      .gallery-item {
+        min-width: 0;
+      }
+      .gallery-item img {
+        min-width: 0;
+      }
+      @media (max-width: 900px) {
+        .wrap {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+        .detail-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        nav {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+      }
+      @media (max-width: 680px) {
+        .wrap {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+        nav {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+        .detail-card {
+          height: 100%;
+        }
+        .gallery {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .cta-row .btn {
+          flex: 1 1 100%;
+          justify-content: center;
+        }
+        .nav-cta {
+          padding: 7px 11px;
+        }
+      }
+      @media (max-width: 420px) {
+        .wrap {
+          padding-left: 14px;
+          padding-right: 14px;
+        }
+        nav {
+          padding-left: 14px;
+          padding-right: 14px;
+        }
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+        .gallery-item {
+          aspect-ratio: 16 / 10;
+        }
+        .detail-card {
+          padding: 18px 14px;
+        }
+        .chip {
+          font-size: 12.5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-bg"></div>
+    <header>
+      <nav>
+        <a class="logo" href="index.html"><span class="dot"></span>EMB</a>
+        <div class="navlinks">
+          <a href="index.html#about">Overview</a>
+          <a href="index.html#changelog">Changelog</a>
+          <a href="index.html#stack">Capabilities</a>
+          <a href="index.html#recognition">Education</a>
+        </div>
+        <a
+          class="nav-cta"
+          href="https://www.linkedin.com/in/esther-mensah-brown-194264163/"
+          >Say hi →</a
+        >
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap">
+          <a class="back-link" href="index.html">← Back to portfolio</a>
+          <div class="eyebrow">UI/UX &amp; Graphic Design</div>
+          <h1>Design &amp; selected work</h1>
+          <p class="lede">
+            A combination of product design and visual communication work across
+            digital products, websites, brands and marketing experiences.
+          </p>
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <div class="wrap">
+          <div class="detail-grid">
+            <div class="detail-card">
+              <div class="design-tag">UI / UX</div>
+              <h3>Product interfaces &amp; user flows</h3>
+              <p>
+                Wireframes, prototypes, and user flows for digital products,
+                translating complex requirements into clear, intuitive user
+                experiences.
+              </p>
+              <div class="gallery" data-group="uiux">
+                <div class="gallery-item" data-idx="0">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787088921/MOB_UI_MOCKUP.png"
+                    alt="Palm Send Mobile App"
+                    loading="lazy"
+                  /><span class="sample-badge">MOBILE APP</span>
+                </div>
+                <div class="gallery-item" data-idx="1">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787088919/MOB_UI_MOCKUP_3.png"
+                    alt="Money Transfer Mobile App"
+                    loading="lazy"
+                  /><span class="sample-badge">MOBILE APP</span>
+                </div>
+                <div class="gallery-item" data-idx="2">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787094228/Group_1_1.png"
+                    alt="Product interface design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="3">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787094057/Group_1.png"
+                    alt="Product interface design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="4">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787094432/Group_1_2.png"
+                    alt="Product interface design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-card">
+              <div class="design-tag">WEBSITE</div>
+              <h3>Website design &amp; redesign</h3>
+              <p>
+                Design responsive websites and digital experiences, from
+                wireframes and user flows through to polished UI designs and
+                prototypes.
+              </p>
+              <div class="gallery" data-group="website">
+                <div class="gallery-item" data-idx="0">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787089326/cu_design.png"
+                    alt="Website design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="1">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787093033/international_students.png"
+                    alt="Website design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="2">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787093032/about_us.png"
+                    alt="Website design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="3">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787093251/importer_s_account___pre-ordering.png"
+                    alt="Website design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="4">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787093251/sign_up_complete.png"
+                    alt="Website design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-card">
+              <div class="design-tag">BRAND IDENTITY</div>
+              <h3>Brand systems</h3>
+              <p>
+                Build visual identities for startups and businesses, including
+                logos, typography, visual direction and supporting marketing
+                assets.
+              </p>
+              <div class="gallery" data-group="brand">
+                <div class="gallery-item" data-idx="0">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787088841/kn-logo-display.jpg"
+                    alt="KN Trendz Brand System"
+                    loading="lazy"
+                  /><span class="sample-badge">LOGO</span>
+                </div>
+                <div class="gallery-item" data-idx="1">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787088841/best-coach-logo-display.jpg"
+                    alt="Best Coach Brand System"
+                    loading="lazy"
+                  /><span class="sample-badge">LOGO</span>
+                </div>
+                <div class="gallery-item" data-idx="5">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787089040/neat_maize.png"
+                    alt="Products"
+                    loading="lazy"
+                  /><span class="sample-badge">BRANDING</span>
+                </div>
+                <div class="gallery-item" data-idx="5">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787089037/neat_cocoa_-_Copy.png"
+                    alt="Products"
+                    loading="lazy"
+                  /><span class="sample-badge">BRANDING</span>
+                </div>
+                <div class="gallery-item" data-idx="5">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787089037/neat_plantain.png"
+                    alt="Products"
+                    loading="lazy"
+                  /><span class="sample-badge">BRANDING</span>
+                </div>
+                <div class="gallery-item" data-idx="2">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787089327/port_3.png"
+                    alt="Logo Samples"
+                    loading="lazy"
+                  /><span class="sample-badge">LOGO</span>
+                </div>
+                <div class="gallery-item" data-idx="3">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787089332/port_5.png"
+                    alt="Products"
+                    loading="lazy"
+                  /><span class="sample-badge">BRANDING</span>
+                </div>
+                <div class="gallery-item" data-idx="4">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787089336/port_6.png"
+                    alt="Products"
+                    loading="lazy"
+                  /><span class="sample-badge">BRANDING</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-card">
+              <div class="design-tag">DIGITAL &amp; PRINT</div>
+              <h3>Marketing &amp; presentation design</h3>
+              <p>
+                Create social media designs, flyers, banners, billboards,
+                presentation templates and other visual assets that communicate
+                ideas clearly.
+              </p>
+              <div class="gallery" data-group="print">
+                <div class="gallery-item" data-idx="0">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787089340/post_4.png"
+                    alt="Marketing design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="1">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787089034/funeral_post_2.png"
+                    alt="Marketing design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="2">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787088920/compass_booket_mockup_cover.png"
+                    alt="Marketing design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="3">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787091943/CHRISTENING_INVITE_THE_BROWNS.jpg"
+                    alt="Marketing design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="4">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787092046/ayeyi_ndwom_main_flyer.jpg"
+                    alt="Marketing design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="4">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787091351/luks-launch-gif.gif"
+                    alt="Marketing design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="4">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787089325/slides-ad.jpg"
+                    alt="Marketing design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+                <div class="gallery-item" data-idx="4">
+                  <img
+                    src="https://res.cloudinary.com/vowegzsd/image/upload/q_auto,f_auto/v1787094610/6x3_feet_youth_banner.jpg"
+                    alt="Marketing design sample"
+                    loading="lazy"
+                  /><span class="sample-badge">SAMPLE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <div class="wrap">
+          <div class="eyebrow">Design toolkit</div>
+          <h2>Tools I use</h2>
+          <div class="chip-list" style="margin-top: 24px">
+            <span class="chip">Figma</span><span class="chip">Sketch</span
+            ><span class="chip">Adobe Photoshop</span
+            ><span class="chip">Adobe Illustrator</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail-section">
+        <div class="wrap">
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:eaburabura@gmail.com"
+              >Discuss a project →</a
+            >
+            <a class="btn btn-ghost" href="index.html">Back to portfolio</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image viewer"
+    >
+      <div class="lightbox-figure">
+        <button
+          class="lightbox-close"
+          type="button"
+          aria-label="Close"
+          onclick="closeLightbox()"
+        >
+          ✕
+        </button>
+        <button
+          class="lightbox-nav lightbox-prev"
+          type="button"
+          aria-label="Previous image"
+          onclick="navLightbox(-1)"
+        >
+          ‹
+        </button>
+        <img id="lightboxImg" src="" alt="" />
+        <button
+          class="lightbox-nav lightbox-next"
+          type="button"
+          aria-label="Next image"
+          onclick="navLightbox(1)"
+        >
+          ›
+        </button>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+      </div>
+    </div>
+
+    <script>
+      var galleries = {};
+      document.querySelectorAll('.gallery').forEach(function (gal) {
+        var group = gal.getAttribute('data-group');
+        var items = Array.prototype.map.call(
+          gal.querySelectorAll('.gallery-item img'),
+          function (img) {
+            return {
+              src: img.getAttribute('src'),
+              alt: img.getAttribute('alt') || '',
+            };
+          }
+        );
+        galleries[group] = items;
+        gal.querySelectorAll('.gallery-item').forEach(function (item, idx) {
+          item.setAttribute('tabindex', '0');
+          item.setAttribute('role', 'button');
+          item.setAttribute('aria-label', 'Open image ' + (idx + 1));
+          item.addEventListener('click', function () {
+            openLightbox(group, idx);
+          });
+          item.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openLightbox(group, idx);
+            }
+          });
+        });
+      });
+
+      var currentGroup = null;
+      var currentIdx = 0;
+      var touchStartX = null;
+
+      function openLightbox(group, idx) {
+        currentGroup = group;
+        currentIdx = idx;
+        renderLightbox();
+        document.getElementById('lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('open');
+        document.body.style.overflow = '';
+        currentGroup = null;
+      }
+      function navLightbox(dir) {
+        if (currentGroup === null) return;
+        var items = galleries[currentGroup];
+        currentIdx = (currentIdx + dir + items.length) % items.length;
+        renderLightbox();
+      }
+      function renderLightbox() {
+        var items = galleries[currentGroup];
+        var item = items[currentIdx];
+        var img = document.getElementById('lightboxImg');
+        img.src = item.src;
+        img.alt = item.alt;
+        document.getElementById('lightboxCaption').textContent = item.alt;
+        document.getElementById('lightboxCounter').textContent =
+          currentIdx + 1 + ' / ' + items.length;
+      }
+
+      document
+        .getElementById('lightbox')
+        .addEventListener('click', function (e) {
+          if (e.target === this) closeLightbox();
+        });
+      document.addEventListener('keydown', function (e) {
+        if (!document.getElementById('lightbox').classList.contains('open'))
+          return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navLightbox(-1);
+        if (e.key === 'ArrowRight') navLightbox(1);
+      });
+
+      var figureEl = document.querySelector('.lightbox-figure');
+      figureEl.addEventListener(
+        'touchstart',
+        function (e) {
+          touchStartX = e.changedTouches[0].clientX;
+        },
+        { passive: true }
+      );
+      figureEl.addEventListener(
+        'touchend',
+        function (e) {
+          if (touchStartX === null) return;
+          var dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            navLightbox(dx < 0 ? 1 : -1);
+          }
+          touchStartX = null;
+        },
+        { passive: true }
+      );
+    </script>
+  </body>
+</html>
